@@ -1,0 +1,17 @@
+language: node
+
+branches:
+  only:
+  - master
+
+services:
+  - docker
+
+before_install:
+  - docker build -t gastongonzalez/kubia .
+
+deploy:
+  provider: script
+  script: bash docker_push.sh
+  on:
+    branch: master
